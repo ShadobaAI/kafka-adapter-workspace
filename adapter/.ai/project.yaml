@@ -61,6 +61,7 @@ connections:
     url: http://127.0.0.1:8766/mcp
   openviking:
     enabled: true
+    url: http://127.0.0.1:1933
 components:
   code-index:
     enabled: true
