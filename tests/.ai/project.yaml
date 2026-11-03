@@ -12,15 +12,15 @@ repositories:
   - id: base
     path: unit/base
     alias: kfk-test-base
-    edt_project: BaseKafka
+    edt_project: base
   - id: examples
     path: unit/examples
     alias: kfk-test-examples
-    edt_project: base.TestAdapterKafka
+    edt_project: examples
   - id: unit
     path: unit/unit
     alias: kfk-unit
-    edt_project: YAxUnit
+    edt_project: unit
   - id: yaxunit
     path: unit/yaxunit
     alias: kfk-yaxunit
