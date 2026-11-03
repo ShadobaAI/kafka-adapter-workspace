@@ -1,0 +1,10 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+[mcp_servers.sonarqube]
+url = "http://ia11:9001/mcp"
+bearer_token_env_var = "SONARQUBE_TOKEN"
+enabled = true
+required = false
+startup_timeout_sec = 10
+description = "SonarQube MCP server for kafka-adapter on ia11 over Streamable HTTP"
+default_tools_approval_mode = "writes"

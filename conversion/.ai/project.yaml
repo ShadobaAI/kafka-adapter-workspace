@@ -1,0 +1,61 @@
+schema_version: "0.2"
+profile_id: generic-1c
+profile_version: 0.2.0
+project:
+  id: conversion
+  adapter: generic-1c
+  purpose: Расширение интеграции адаптера Kafka для 1С:Конвертации данных 3.1
+repositories:
+  - id: kfk
+    path: KFK
+    alias: kfk-conv
+    edt_project: kfk
+  - id: kd
+    path: КД
+    alias: kfk-conv-kd
+    edt_project: КД
+roots:
+  source:
+    - KFK/src
+    - КД/src
+  protected:
+    - KFK/src
+    - КД/src
+authorities:
+  edt_writer: edt
+  code_index: code-index
+  bsl_ls: bsl-ls
+  v8std: v8std
+policy:
+  mode: conservative
+  edt_repository_ids:
+    - kfk
+    - kd
+testing:
+  commands: []
+  yaxunit: false
+  vanessa: false
+knowledge:
+  mode: transitional
+  provider: openviking
+  manifest: null
+  collections:
+    - kafka-adapter-docs
+  collection_uris:
+    kafka-adapter-docs: viking://resources/kafka-git/kafka-adapter/docs
+  required: false
+  dependent_actions: []
+compatibility:
+  core: ">=0.1.0"
+connections:
+  edt:
+    url: http://127.0.0.1:8767/mcp
+  v8std:
+    url: http://127.0.0.1:8766/mcp
+  openviking:
+    enabled: true
+components:
+  code-index:
+    enabled: true
+  bsl-ls:
+    enabled: true

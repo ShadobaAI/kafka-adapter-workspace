@@ -1,0 +1,68 @@
+schema_version: "0.2"
+profile_id: generic-1c
+profile_version: 0.2.0
+project:
+  id: adapter
+  adapter: generic-1c
+  purpose: Разработка адаптера Kafka, базовой конфигурации и примеров
+repositories:
+  - id: adapter
+    path: adapter
+    alias: kfk
+    edt_project: АдаптерKafka
+  - id: base
+    path: base
+    alias: kfk-base
+    edt_project: BaseKafka
+  - id: examples
+    path: examples
+    alias: kfk-examples
+    edt_project: base.TestAdapterKafka
+roots:
+  source:
+    - adapter/src
+    - base/src
+    - examples/src
+  protected:
+    - adapter/src
+    - base/src
+    - examples/src
+authorities:
+  edt_writer: edt
+  code_index: code-index
+  bsl_ls: bsl-ls
+  v8std: v8std
+policy:
+  mode: conservative
+  edt_repository_ids:
+    - adapter
+    - base
+    - examples
+testing:
+  commands: []
+  yaxunit: false
+  vanessa: false
+knowledge:
+  mode: transitional
+  provider: openviking
+  manifest: null
+  collections:
+    - kafka-adapter-docs
+  collection_uris:
+    kafka-adapter-docs: viking://resources/kafka-git/kafka-adapter/docs
+  required: false
+  dependent_actions: []
+compatibility:
+  core: ">=0.1.0"
+connections:
+  edt:
+    url: http://127.0.0.1:8765/mcp
+  v8std:
+    url: http://127.0.0.1:8766/mcp
+  openviking:
+    enabled: true
+components:
+  code-index:
+    enabled: true
+  bsl-ls:
+    enabled: true

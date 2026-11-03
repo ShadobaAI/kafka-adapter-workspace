@@ -1,0 +1,41 @@
+# Allow only portable workspace files. This also excludes nested checkouts,
+# local databases, EDT state, indexes, backups, credentials and test output.
+# Tracked files are unaffected by these ignore rules.
+/*
+!/.gitignore
+!/README.md
+!/AGENTS.md
+!/WORKSPACE-RULES.md
+!/1C-RULES.md
+!/adapter/
+!/conversion/
+!/tests/
+
+/adapter/*
+!/adapter/AGENTS.md
+!/adapter/.ai/
+!/adapter/.codex/
+/adapter/.ai/*
+!/adapter/.ai/.gitignore
+!/adapter/.ai/PROJECT.md
+!/adapter/.ai/project.yaml
+/adapter/.codex/*
+!/adapter/.codex/config.toml
+
+/conversion/*
+!/conversion/AGENTS.md
+!/conversion/.ai/
+/conversion/.ai/*
+!/conversion/.ai/.gitignore
+!/conversion/.ai/PROJECT.md
+!/conversion/.ai/project.yaml
+
+/tests/*
+!/tests/unit/
+/tests/unit/*
+!/tests/unit/AGENTS.md
+!/tests/unit/.ai/
+/tests/unit/.ai/*
+!/tests/unit/.ai/.gitignore
+!/tests/unit/.ai/PROJECT.md
+!/tests/unit/.ai/project.yaml

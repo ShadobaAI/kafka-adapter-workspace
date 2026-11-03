@@ -1,0 +1,57 @@
+schema_version: "0.2"
+profile_id: generic-1c
+profile_version: 0.2.0
+project:
+  id: ui
+  adapter: generic-1c
+  purpose: UI-тесты адаптера Kafka на Vanessa Automation
+repositories:
+  - id: ui
+    path: "."
+    alias: kfk-ui
+roots:
+  source: []
+  protected: []
+authorities:
+  edt_writer: edt
+  code_index: code-index
+  bsl_ls: bsl-ls
+  v8std: v8std
+policy:
+  mode: conservative
+  unbound_edt_repositories:
+    - ui
+testing:
+  commands: []
+  yaxunit: false
+  vanessa: true
+  vanessa_config:
+    repository_id: ui
+    runtime_profile: .vanessa/profile.json
+    features: features
+    results: .vanessa/results
+    server_name: vanessa
+knowledge:
+  mode: transitional
+  provider: openviking
+  manifest: null
+  collections:
+    - kafka-adapter-docs
+  collection_uris:
+    kafka-adapter-docs: viking://resources/kafka-git/kafka-adapter/docs
+  required: false
+  dependent_actions: []
+compatibility:
+  core: ">=0.1.0"
+connections:
+  edt:
+    url: http://127.0.0.1:8765/mcp
+  v8std:
+    url: http://127.0.0.1:8766/mcp
+  openviking:
+    enabled: true
+components:
+  code-index:
+    enabled: true
+  bsl-ls:
+    enabled: false

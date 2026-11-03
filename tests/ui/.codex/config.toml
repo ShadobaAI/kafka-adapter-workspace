@@ -1,0 +1,4 @@
+[mcp_servers.vanessa]
+url = "http://127.0.0.1:9876/mcp"
+startup_timeout_sec = 30
+tool_timeout_sec = 120
