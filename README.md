@@ -8,14 +8,21 @@
 
 ## Структура
 
-| Каталог | Назначение |
+| Каталог | Назначение и репозиторий |
 |---|---|
-| `adapter/adapter` | Продуктовый адаптер и его документация. |
-| `adapter/base` | Базовая конфигурация для разработки адаптера. |
-| `adapter/examples` | Примеры и сценарии интеграции. |
-| `conversion/KFK`, `conversion/КД` | Расширение для Конвертации данных 3.1 и базовая конфигурация. |
-| `tests/ui`, `tests/unit`, `tests/reports` | UI- и модульные тесты, опубликованные отчёты. |
-| `tools`, `tasks` | Инструменты, задачи, спецификации и архитектурные решения. |
+| `adapter/adapter` | [Адаптер Kafka](https://github.com/ShadobaAI/kafka-adapter) и его документация. |
+| `adapter/base` | [Базовая конфигурация](https://github.com/ShadobaAI/kafka-adapter-base) для разработки адаптера. |
+| `adapter/examples` | [Примеры](https://github.com/ShadobaAI/kafka-adapter-examples) и сценарии интеграции. |
+| `conversion/KFK` | [Расширение для Конвертации данных 3.1](https://github.com/ShadobaAI/kafka-adapter-conv). |
+| `conversion/КД` | Внешняя базовая конфигурация Конвертации данных. |
+| `tests/ui` | [UI-тесты](https://github.com/ShadobaAI/kafka-adapter-tests-ui) на Vanessa Automation. |
+| `tests/unit/unit` | [Модульные тесты](https://github.com/ShadobaAI/kafka-adapter-tests-unit) на YAxUnit. |
+| `tests/unit/base` | База для модульных тестов, собираемая из адаптера и базовой конфигурации. |
+| `tests/unit/examples` | Отдельная копия [репозитория примеров](https://github.com/ShadobaAI/kafka-adapter-examples) для модульных тестов. |
+| `tests/unit/yaxunit` | Отдельный checkout [YAxUnit](https://github.com/bia-technologies/yaxunit). |
+| `tests/reports` | [Опубликованные отчёты тестов](https://github.com/ShadobaAI/kafka-adapter-tests-reports). |
+| `tools` | [Инструменты разработки](https://github.com/ShadobaAI/kafka-tools). |
+| `tasks` | [Задачи, спецификации и архитектурные решения](https://github.com/ShadobaAI/kfk-tasks). |
 
 Вложенные репозитории подключаются отдельно и сохраняют собственные истории Git; корневой репозиторий не является их заменой. Файлы `.gitkeep` сохраняют каталоги, в которых нет других отслеживаемых корнем файлов, но не содержат исходный код проектов.
 
@@ -23,9 +30,11 @@
 
 ## AI-профили
 
+AI-harness рабочего пространства — плагин [1C AI Core](https://github.com/ShadobaAI/edt-ai-core) для Codex. Он использует контекст и профили проектов для работы с EDT, анализа кода, проверки стандартов и тестирования.
+
 Для работы с 1С используются профили [adapter](adapter/.ai/project.yaml), [conversion](conversion/.ai/project.yaml), [unit](tests/unit/.ai/project.yaml) и профиль UI в `tests/ui/.ai/project.yaml`. Для каждого проекта выбирайте его рабочий каталог и следуйте местным инструкциям. EDT, code-index, BSL LS и v8std необходимы в соответствии с правилами выбранного профиля; OpenViking используется как необязательный источник документации при доступном внешнем сервисе.
 
-Инструкции и настройки, необходимые внутри каталогов `tests/ui`, `tests/reports`, `tools` и `tasks`, хранятся в корневом Git, но остаются по своим рабочим путям. Вложенные `.gitignore` исключают их из соответствующих репозиториев. Существующий `tools/ai` сохраняется до отдельного решения пользователя.
+Инструкции и настройки, необходимые внутри каталогов `tests/ui`, `tests/reports`, `tools` и `tasks`, хранятся в корневом Git, но остаются по своим рабочим путям. Вложенные `.gitignore` исключают их из соответствующих репозиториев.
 
 ## Локальные данные
 
