@@ -1,9 +1,0 @@
-# Kafka Adapter UI tests
-
-This repository owns Vanessa Automation Gherkin scenarios in `features/` and test configuration. It is used to develop and validate Kafka Adapter changes and is not shipped to production. Existing scenarios and run results are evidence of test behavior. The adapter, its base configuration, and its examples are separate repositories; modifying them requires explicit task scope.
-
-The [project profile](project.yaml) enables Vanessa using `.vanessa/profile.json`, `features/`, `.vanessa/results/`, and the `vanessa` MCP server. The runtime profile and results are local; setup and focused run commands are documented in the [README](../README.md). `VAParams.json` is the separate CI configuration. The existing `.codex/config.toml` provides the Vanessa MCP endpoint.
-
-The intended product authorities are the adapter profile's EDT endpoint and canonical code-index aliases `kfk`, `kfk-base`, and `kfk-examples`; v8std provides standards and Vanessa guidance. The UI profile cannot currently bind those external repository paths: plugin schema 0.2 prohibits paths outside its root. Its `kfk-ui` alias identifies only the test repository for profile ownership; it is not a product index. An EDT URL alone does not prove project binding or readiness. Use the [adapter profile](../../../adapter/.ai/project.yaml) as the source of the intended mappings and stop any dependent operation until the exact mapping is supported and verified.
-
-The profile selects the optional OpenViking collection `kafka-adapter-docs` for adapter documentation, preferred when its externally managed service and collection are ready. No endpoint or publication readiness is assumed. Project-specific scenario, session, data and restoration rules are in [AGENTS.md](../AGENTS.md); the initialization effects and fixture inventory are in [FIXTURES.md](FIXTURES.md).

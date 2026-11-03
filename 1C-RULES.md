@@ -9,9 +9,9 @@
 |---|---|---:|---|
 | `adapter/{adapter,base,examples}` | adapter | `8765` | `adapter/.ai/project.yaml` |
 | `conversion/{KFK,КД}` | conversion | `8767` | `conversion/.ai/project.yaml` |
-| `tests/unit/{base,examples,unit,yaxunit}` | unit | `8768` | `tests/unit/.ai/project.yaml` |
+| `tests/unit/{base,examples,unit,yaxunit}` | unit | `8768` | `tests/.ai/project.yaml` |
 
-The adapter, conversion and unit EDT workspaces use distinct fixed ports, respectively `8765`, `8767` and `8768`, so they can run concurrently. These are workspace names, not MCP tool names: use the `edt` relay bound to the corresponding 1C AI Core profile. The conversion and unit profile settings, including the `conversion/КД` route, are owned by the respective `conversion` and `tests/unit` profile roots. The server configured inside each EDT workspace and its Codex client URL must use the same assigned port.
+The adapter, conversion and unit EDT workspaces use distinct fixed ports, respectively `8765`, `8767` and `8768`, so they can run concurrently. These are workspace names, not MCP tool names: use the `edt` relay bound to the corresponding 1C AI Core profile. The conversion and testing profile settings, including the `conversion/КД` route, are owned by the respective `conversion` and `tests` profile roots. The server configured inside each EDT workspace and its Codex client URL must use the same assigned port.
 
 The workspace uses these explicit code-index bindings:
 
@@ -22,8 +22,8 @@ The workspace uses these explicit code-index bindings:
 | `adapter/examples` | `kfk-examples` | Index only the canonical `adapter/examples` checkout. |
 | `conversion/KFK` | `kfk-conv` | Index the Conversion Data extension checkout. |
 | `conversion/КД` | `kfk-conv-kd` | Index the supporting Conversion Data base project. |
-| `tests/unit/base` | `kfk-base`, `kfk` | Reuse the canonical indexes from `adapter/base` and `adapter/adapter`; do not index the assembled project separately. |
-| `tests/unit/examples` | `kfk-examples` | Reuse the canonical index from `adapter/examples`; do not index this checkout separately. |
+| `tests/unit/base` | `kfk-test-base` | Index the assembled test base separately. |
+| `tests/unit/examples` | `kfk-test-examples` | Index this test checkout separately. |
 | `tests/unit/unit` | `kfk-unit` | Index only this repository checkout. |
 | `tests/unit/yaxunit` | `kfk-yaxunit` | Index only this upstream repository checkout. |
 

@@ -2,29 +2,40 @@ schema_version: "0.2"
 profile_id: generic-1c
 profile_version: 0.2.0
 project:
-  id: unit
+  id: tests
   adapter: generic-1c
-  purpose: Модульные тесты адаптера Kafka на YAxUnit
+  purpose: UI- и модульные тесты адаптера Kafka на Vanessa Automation и YAxUnit
 repositories:
+  - id: ui
+    path: ui
+    alias: kfk-ui
+  - id: base
+    path: unit/base
+    alias: kfk-test-base
+    edt_project: BaseKafka
+  - id: examples
+    path: unit/examples
+    alias: kfk-test-examples
+    edt_project: base.TestAdapterKafka
   - id: unit
-    path: unit
+    path: unit/unit
     alias: kfk-unit
     edt_project: YAxUnit
   - id: yaxunit
-    path: yaxunit
+    path: unit/yaxunit
     alias: kfk-yaxunit
     edt_project: yaxunit
 roots:
   source:
-    - base/src
-    - examples/src
-    - unit/src
-    - yaxunit/exts/yaxunit/src
+    - unit/base/src
+    - unit/examples/src
+    - unit/unit/src
+    - unit/yaxunit/exts/yaxunit/src
   protected:
-    - base/src
-    - examples/src
-    - unit/src
-    - yaxunit/exts/yaxunit/src
+    - unit/base/src
+    - unit/examples/src
+    - unit/unit/src
+    - unit/yaxunit/exts/yaxunit/src
 authorities:
   edt_writer: edt
   code_index: code-index
@@ -33,18 +44,31 @@ authorities:
 policy:
   mode: conservative
   edt_repository_ids:
+    - base
+    - examples
     - unit
     - yaxunit
+  unbound_edt_repositories:
+    - ui
 testing:
   commands: []
   yaxunit: true
-  vanessa: false
+  vanessa: true
   yaxunit_config:
     repository_id: unit
     framework_repository_id: yaxunit
+    product_repository_ids:
+      - base
+      - examples
     runner: edt
-    results: unit/allure
+    results: unit/unit/allure
     launch_configuration: base Тонкий клиент
+  vanessa_config:
+    repository_id: ui
+    runtime_profile: ui/.vanessa/profile.json
+    features: ui/features
+    results: ui/.vanessa/results
+    server_name: vanessa
 knowledge:
   mode: transitional
   provider: openviking

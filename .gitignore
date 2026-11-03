@@ -31,11 +31,13 @@
 !/conversion/.ai/project.yaml
 
 /tests/*
-!/tests/unit/
-/tests/unit/*
-!/tests/unit/AGENTS.md
-!/tests/unit/.ai/
-/tests/unit/.ai/*
-!/tests/unit/.ai/.gitignore
-!/tests/unit/.ai/PROJECT.md
-!/tests/unit/.ai/project.yaml
+!/tests/AGENTS.md
+!/tests/.ai/
+/tests/.ai/*
+!/tests/.ai/.gitignore
+!/tests/.ai/FIXTURES.md
+!/tests/.ai/PROJECT.md
+!/tests/.ai/project.yaml
+!/tests/.codex/
+/tests/.codex/*
+!/tests/.codex/config.toml
