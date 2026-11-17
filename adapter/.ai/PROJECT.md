@@ -10,6 +10,6 @@ The adapter provides bidirectional exchange between 1C:Enterprise and Apache Kaf
 
 OpenViking is the optional, preferred knowledge source for [adapter documentation](../adapter/docs/). Its service lifecycle and document updates are managed separately. A local documentation path does not establish the server collection, publication or search readiness.
 
-The project-local [Codex configuration](../.codex/config.toml) also registers the optional `mssql` MCP server at `http://127.0.0.1:5000/mcp`; the HTTP service runs separately.
+The project-local [Codex configuration](../.codex/config.toml) also registers the optional `mssql` MCP server at `http://127.0.0.1:5000/mcp` and the optional `elasticsearch` MCP server at `http://localhost:8080/mcp`; these HTTP services run separately.
 
 Repository paths, index aliases, EDT project names and knowledge mode are in [project.yaml](project.yaml); working rules and authority boundaries are in [AGENTS.md](../AGENTS.md). Rules for modifying and marking supplier code, ownership of individual objects, and permitted test environments are not established here: determine them from applicable instructions and task context before dependent work.
