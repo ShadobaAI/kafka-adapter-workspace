@@ -8,3 +8,8 @@ required = false
 startup_timeout_sec = 10
 description = "SonarQube MCP server for kafka-adapter on ia11 over Streamable HTTP"
 default_tools_approval_mode = "writes"
+
+[mcp_servers.mssql]
+url = "http://127.0.0.1:5000/mcp"
+enabled = true
+required = false
