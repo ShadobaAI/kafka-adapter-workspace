@@ -13,6 +13,11 @@
 
 /adapter/*
 !/adapter/AGENTS.md
+!/adapter/.agents/
+/adapter/.agents/*
+!/adapter/.agents/skills/
+/adapter/.agents/skills/*
+!/adapter/.agents/skills/onec-mcp-toolkit/
 !/adapter/.ai/
 !/adapter/.codex/
 /adapter/.ai/*
