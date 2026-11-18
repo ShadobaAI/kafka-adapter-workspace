@@ -5,13 +5,13 @@ description: Diagnose a running 1C infobase with MCP Toolkit. Use for 1C queries
 
 # 1C MCP Toolkit
 
-Use the `onec-mcp-toolkit` server in the [adapter Codex configuration](../../../.codex/config.toml). Match the Toolkit session's infobase and client or server context to the task before accessing its data or UI. Use tools advertised by the current MCP connection and their live schemas. If discovery changes on the server, reconnect and use the refreshed catalog.
+Use the `ib-mcp` connection to 1C MCP Toolkit in the [adapter Codex configuration](../../../.codex/config.toml). Match the Toolkit session's infobase and client or server context to the task before accessing its data or UI. Use tools advertised by the current MCP connection and their live schemas. If discovery changes on the server, reconnect and use the refreshed catalog.
 
 ## Choose the evidence source
 
 | Fact to establish | Route |
 | --- | --- |
-| Data, deployed metadata, roles, or registration log in the connected infobase | `onec-mcp-toolkit` |
+| Data, deployed metadata, roles, or registration log in the connected infobase | `ib-mcp` |
 | Project source and references, live EDT model and diagnostics, platform API compatibility, standards, or persistent 1C changes | Assigned 1C AI Core authorities under [1C-RULES.md](../../../../1C-RULES.md) |
 | SQL Server storage, database metrics, or data exposed by the SQL service | `mssql`, scoped to the identified database. For entity tools, use targeted `describe_entities` when the entity is known. |
 | Indexed application or infrastructure events and aggregations | `elasticsearch`, scoped to the index and time range |

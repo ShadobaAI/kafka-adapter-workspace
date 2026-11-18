@@ -19,12 +19,6 @@ url = "http://localhost:8080/mcp"
 enabled = true
 required = false
 
-[mcp_servers.onec-mcp-toolkit]
-url = "http://127.0.0.1:6003/mcp"
-enabled = true
-required = false
-
-# Short name for the same 1C infobase connection.
 [mcp_servers.ib-mcp]
 url = "http://127.0.0.1:6003/mcp"
 enabled = true
