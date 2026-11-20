@@ -37,6 +37,13 @@
 
 /tests/*
 !/tests/AGENTS.md
+!/tests/.agents/
+/tests/.agents/*
+!/tests/.agents/skills/
+/tests/.agents/skills/*
+!/tests/.agents/skills/kafka-docker-tests/
+/tests/.agents/skills/kafka-docker-tests/*
+!/tests/.agents/skills/kafka-docker-tests/SKILL.md
 !/tests/.ai/
 /tests/.ai/*
 !/tests/.ai/.gitignore
@@ -46,3 +53,9 @@
 !/tests/.codex/
 /tests/.codex/*
 !/tests/.codex/config.toml
+!/tests/scripts/
+/tests/scripts/*
+!/tests/scripts/docker-ci/
+/tests/scripts/docker-ci/*
+!/tests/scripts/docker-ci/create_ci_infobase.py
+!/tests/scripts/docker-ci/run_ui_docker.py
