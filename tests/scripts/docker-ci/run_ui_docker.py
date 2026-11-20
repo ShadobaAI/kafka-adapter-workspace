@@ -31,10 +31,9 @@ ALIASES = {
 SCENARIO_HEADINGS = {"сценарий", "пример", "структура сценария", "шаблон сценария",
                      "scenario", "example", "scenario outline", "scenario template"}
 OTHER_HEADINGS = {"функциональность", "правило", "контекст", "переменные", "feature", "rule", "background"}
+# Inherit the client image's locale, as in release CI.
 WORKER_COMMAND = r"""
 set -euo pipefail
-export LANG=C.UTF-8
-export LC_ALL=C.UTF-8
 
 export_results() {
     local rc=$?
