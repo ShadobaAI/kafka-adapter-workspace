@@ -15,8 +15,9 @@ Select `tests` as the Codex working directory. Read [project context](.ai/PROJEC
 
 ## UI scenarios
 
-- Edit feature files and other non-1C test configuration directly in UTF-8; preserve Gherkin language, names, indentation, fixtures and scenario style. Use `$vanessa-ui-tests` for UI scenarios. Interactive runs use `ui/.vanessa/profile.json` and the built-in data processor at `/URL e1cib/app/Обработка.VanessaAutomationsingle`. Static design, review and authoring do not require the interactive profile.
-- For isolated Docker UI runs, follow [kafka-docker-tests](.agents/skills/kafka-docker-tests/SKILL.md). Docker runs use the release CI's Vanessa Single EPF and `ui/VAParams.json`.
+- Edit feature files and other non-1C test configuration directly in UTF-8; preserve Gherkin language, names, indentation, fixtures and scenario style. Use `$vanessa-ui-tests` for UI scenarios. Static design, review and authoring do not require the interactive profile.
+- The primary UI test workflow uses the 1C AI Core plugin on the Windows host. Run with `ui/.vanessa/profile.json` and the built-in data processor at `/URL e1cib/app/Обработка.VanessaAutomationsingle`.
+- Docker is also available for isolated UI runs using the release CI's Vanessa Single EPF and `ui/VAParams.json`. Follow [kafka-docker-tests](.agents/skills/kafka-docker-tests/SKILL.md).
 - Run only affected features or scenarios with documented commands when the environment is available. Run relevant adapter scenarios covering a change when available.
 - For `кфкПродюсеры` and `кфкКонсьюмеры`, cover items and groups (task dispatchers) for each applicable operation in independent scenarios. Check operations, saved state and permissions separately; derive group expectations from its own form and commands. Use scenario-owned dispatchers for write tests and clean them up on success or failure; do not modify prepared `Диспетчер задач` groups merely as local cleanup.
 
