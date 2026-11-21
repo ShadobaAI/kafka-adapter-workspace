@@ -1,6 +1,6 @@
 ---
 name: kafka-docker-tests
-description: Собирать тестовую 1Cv8.1CD адаптера Kafka по release CI и запускать локальные сценарии Vanessa в отдельных Docker-контейнерах с Allure. Применять для Docker-прогонов в тестовом контуре Kafka Adapter.
+description: Собирать тестовую 1Cv8.1CD адаптера Kafka из локальной выгрузки CF-XML и запускать сценарии Vanessa в отдельных Docker-контейнерах с Allure. Применять для Docker-прогонов в тестовом контуре Kafka Adapter.
 ---
 
 # Docker-прогоны UI адаптера Kafka
@@ -9,18 +9,21 @@ description: Собирать тестовую 1Cv8.1CD адаптера Kafka �
 
 ## Подготовить базу
 
-Переиспользуй готовую `1Cv8.1CD`, если нужны те же версии конфигурации и фикстур. Для новой базы извлеки внутренний `kafka-adapter-cf-xml.zip` из артефакта `cf-xml-artifacts` нужного запуска CI или укажи опубликованный `--adapter-tag`.
+Переиспользуй готовую `1Cv8.1CD`, если нужны те же версии конфигурации и фикстур. Для новой базы скрипт берёт готовую выгрузку CF-XML из `.local/base_xml` с `Configuration.xml` в корне. Адаптер уже входит в эту конфигурацию.
+
+Перед **каждым** созданием базы с помощью `create_ci_infobase.py` напомни пользователю, что `tests/.local/base_xml` — выгрузка конфигурации `base` из базы `unit`. Спроси, актуальна ли выгрузка для этой сборки. Только после явного подтверждения в чате передай `yes` в стандартный ввод скрипта для этого запуска. При ручном запуске пользователь вводит `да` или `yes` в терминале.
 
 ```powershell
 $tools = Join-Path $PWD 'scripts\docker-ci'
-$adapterXml = '<путь к извлечённому kafka-adapter-cf-xml.zip>'
-$base = python -X utf8 "$tools\create_ci_infobase.py" --adapter-xml $adapterXml | ConvertFrom-Json
+$base = python -X utf8 "$tools\create_ci_infobase.py" | ConvertFrom-Json
 $base.base
 ```
 
 Для повторного запуска загрузи `$base` из `base.json` нужной сборки через `Get-Content -Raw -Encoding UTF8` и `ConvertFrom-Json`. Каталог сборок по умолчанию — `.local/docker-ci/bases`.
 
-Скрипт получает DT, XML базы и расширения из тех же источников, что CI. Для GHCR использует ORAS и существующую авторизацию Docker. Для готового набора исходных артефактов передай `--assets`; при необходимости добавь `--adapter-xml`, чтобы выбрать другую сборку адаптера. Ожидаемый состав набора указан в `release-quality.yml` адаптера. Проверяй `base.json`, `create-infobase.log` и `fill-infobase.log` в `$base.root`. Манипуляции с тестовыми данными выполняются на новых экземплярах базы, с учётом `.ai/FIXTURES.md`.
+DT и расширения скрипт получает из источников release CI. Для GHCR он использует ORAS и существующую авторизацию Docker. Чтобы взять эти файлы с диска, передай `--assets` с путём к каталогу с `kfk-tmpl-test.dt`, `kafka-adapter-examples.cfe`, `unit/YAXUNIT.cfe`, `unit/unit.cfe` (или `unit/output/unit.cfe`) и `ui/VAExtension.cfe`. В этот каталог можно положить `ui/vanessa-automation-single.epf` для UI-прогона.
+
+В `base.json` поле `base_xml` указывает исходный каталог, а `inputs.base_xml` содержит SHA-256 по относительным путям и содержимому файлов загруженной копии. Проверяй `create-infobase.log` и `fill-infobase.log` в `$base.root`. Манипуляции с тестовыми данными выполняются на новых экземплярах базы, с учётом `.ai/FIXTURES.md`.
 
 ## Запустить нужные сценарии
 
