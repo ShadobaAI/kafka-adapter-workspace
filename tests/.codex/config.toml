@@ -1,4 +1,30 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
 [mcp_servers.vanessa]
 url = "http://127.0.0.1:9876/mcp"
 startup_timeout_sec = 30
 tool_timeout_sec = 120
+
+[mcp_servers.sonarqube]
+url = "http://ia11:9001/mcp"
+bearer_token_env_var = "SONARQUBE_TOKEN"
+enabled = true
+required = false
+startup_timeout_sec = 10
+description = "SonarQube MCP server for kafka-adapter on ia11 over Streamable HTTP"
+default_tools_approval_mode = "writes"
+
+[mcp_servers.mssql]
+url = "http://127.0.0.1:5000/mcp"
+enabled = true
+required = false
+
+[mcp_servers.elasticsearch]
+url = "http://localhost:8080/mcp"
+enabled = true
+required = false
+
+[mcp_servers.ib-mcp]
+url = "http://127.0.0.1:6003/mcp"
+enabled = true
+required = false
